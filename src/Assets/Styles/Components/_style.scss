@@ -1,0 +1,23 @@
+.main{
+    background-color: #e0faf7;
+    width: 100vw;
+    height: 100vh;
+    .container{
+        width: 80%;
+        margin: 0 auto;
+        .CalendarMain{
+            display: flex;
+            .CalendarLeft{
+                width: 40%;
+                margin-right: 2%;
+                background-color: #fff;
+                padding: 40px 10px;
+            }
+            .CalendarRight{
+                width: 58%;
+                background-color: #fff;
+                padding: 40px 0;
+            }
+        }
+    }
+}

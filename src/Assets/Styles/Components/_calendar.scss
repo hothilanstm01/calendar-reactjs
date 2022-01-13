@@ -1,0 +1,11 @@
+.Celendar{
+    display: flex;
+    flex-wrap: wrap;
+    .CellWrapper{
+        width: 14.28%;
+        text-align: center;
+        border: 1px solid #eaeaea;
+        height: 100px;
+        padding: 10px 0;
+    }
+}
