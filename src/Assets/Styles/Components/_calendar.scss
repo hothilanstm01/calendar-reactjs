@@ -1,11 +1,50 @@
-.Celendar{
-    display: flex;
-    flex-wrap: wrap;
-    .CellWrapper{
-        width: 14.28%;
+.Celendar {
+  display: flex;
+  flex-wrap: wrap;
+  .CellWrapper {
+    width: 14.28%;
+    text-align: center;
+    border: 1px solid #eaeaea;
+    height: 100px;
+  }
+
+  .RowCell {
+    @include flex(center, center);
+    padding: 10px 0;
+    cursor: pointer;
+    .DayWrapper {
+      .CurrentDay {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: $darkblue;
+        color: #fff;
         text-align: center;
-        border: 1px solid #eaeaea;
-        height: 100px;
-        padding: 10px 0;
+        @include flex(center, center);
+      }
     }
+  }
+
+  .EventItem {
+    width: 100%;
+    // display: none;  
+    //   &.active {
+    //     display: block;
+    //     // overflow: hidden;
+    //   }
+    .event {
+      padding: 2px 0;
+      font-size: 12px;
+      border-radius: 5px;
+      border-left: 2px solid $darkblue;
+      background: $lightorange;
+      margin-bottom: 2px;
+      cursor: pointer;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }

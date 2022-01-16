@@ -1,30 +1,60 @@
 import moment from "moment";
+import { useEffect, useState } from "react";
+import eventsApi from "./api/eventsApi";
 import "./App.css";
+import CalendarLeft from "./Component/Calendar/CalenderLeft";
 import Celendar from "./Component/Calendar/Celendar";
+import Header from "./Component/Header/Header";
+import HeaderLeft from "./Component/Header/HeaderLeft";
 
 function App() {
-  console.log(moment());
-  window.moment = moment;
+  const [events, setEvents] = useState([]);
+  const [moments, setMoments] = useState(moment());
   moment.updateLocale("en", { week: { dow: 1 } });
-  const startDay = moment().startOf("month").startOf("week");
-  // const endDay = moment().endOf("month").endOf("week");
-  // console.log(startDay.format("YYYY-MM-DD"));
-  // console.log(endDay.format("YYYY-MM-DD"));
-  // const calendar = [];
-  // const day = startDay.clone();
-  // while (day.isAfter(endDay)) {
-  //   calendar.push(day.clone());
-  //   day.add(1, "day");
-  // }
+  const startDay = moments.clone().startOf("month").startOf("week");
+  const prevHandler = () => {
+    setMoments((prev) => prev.clone().subtract(1, "month"));
+  };
+  const nextHandler = () => {
+    setMoments((prev) => prev.clone().add(1, "month"));
+  };
+  const todayHandler = () => setMoments(moment());
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const res = await eventsApi.GetEvents();
+      setEvents(res);
+    };
+    fetchEvents();
+  }, [moments]);
+  console.log(events);
   return (
     <div className="main">
       <div className="container">
         <div className="CalendarMain">
           <div className="CalendarLeft">
-            <Celendar startDay={startDay} />
+            <HeaderLeft
+              today={moments}
+              prevHandler={prevHandler}
+              nextHandler={nextHandler}
+              // todayHandler={todayHandler}
+            />
+            <CalendarLeft startDay={startDay} today={moments} events={events} />
           </div>
           <div className="CalendarRight">
-            <Celendar startDay={startDay} />
+            {/* <Header
+              today={moments}
+              prevHandler={prevHandler}
+              nextHandler={nextHandler}
+              todayHandler={todayHandler}
+            /> */}
+            <Celendar
+              startDay={startDay}
+              today={moments}
+              events={events}
+              prevHandler={prevHandler}
+              nextHandler={nextHandler}
+              todayHandler={todayHandler}
+            />
           </div>
         </div>
       </div>

@@ -1,0 +1,71 @@
+.header {
+  width: 100%;
+  padding: 20px;
+  .containt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .Left {
+      display: flex;
+      .ButtonToday {
+        border: 1px solid $lightblue;
+        padding: 7px 12px;
+        cursor: pointer;
+        border-radius: 10px;
+        @include flex(center, center);
+      }
+      .ButtonGroup {
+        cursor: pointer;
+        display: flex;
+        font-size: 30px;
+        padding: 0 12px;
+        @include flex(center, center);
+        color: $lightblue;
+      }
+      .Title {
+        @include flex(center, center);
+        color: $darkblue;
+      }
+    }
+    .Right {
+      cursor: pointer;
+      .ant-select {
+        color: #fff;
+        .ant-select-selector {
+          background-color: $darkblue;
+          border-radius: 10px;
+          border: 0;
+          height: 0;
+          padding: 20px;
+
+          @include flex(center, center);
+         
+        }
+        .ant-select-arrow{
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+.headerleft {
+  @include flex(center, center);
+  padding-bottom: 10px;
+  .containt {
+    display: flex;
+    .ButtonNext,
+    .ButtonPre {
+      font-size: 30px;
+      color: $lightblue;
+      padding: 0 12px;
+      @include flex(center, center);
+      cursor: pointer;
+    }
+    .Title {
+      cursor: pointer;
+      color: $darkblue;
+      @include flex(center, center);
+margin-bottom: 0;
+    }
+  }
+}
