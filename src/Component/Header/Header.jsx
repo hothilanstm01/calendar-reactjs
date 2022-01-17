@@ -5,10 +5,8 @@ import moment from "moment";
 const { Option } = Select;
 
 const Header = (props) => {
-  const { today, prevHandler, nextHandler, todayHandler } = props;
-  function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
+  const { today, prevHandler, nextHandler, todayHandler,handleChange } = props;
+
   return (
     <div className="header">
       <div className="containt">
@@ -33,9 +31,9 @@ const Header = (props) => {
             placeholder="Month"
           >
             {[...Array(12)].map((i, month) => (
-              <Option value={month}>
+              <Option value={month} >
                 {moment()
-                  .month(month + 1)
+                  .month(month)
                   .format("MMMM")}
               </Option>
             ))}

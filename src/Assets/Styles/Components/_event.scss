@@ -1,103 +1,97 @@
-.Events{
-  display: none;
-  &.active{
-    display: block;
-  }
-  .Event {
-    padding: 20px 0;
-    
-    .HeaderEvent {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .Title {
-        color: $darkblue;
-      }
-      .View {
-        background-color: $darkblue;
-        color: #fff;
-        padding: 7px 12px;
-        border-radius: 15px;
-        cursor: pointer;
-      }
+.Event {
+  padding: 20px 0;
+  
+  .HeaderEvent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .Title {
+      color: $darkblue;
     }
-    .Content {
-      .Day {
-        color: grey;
-        padding: 10px 0;
-      }
-      .Evn {
-        .content {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          padding: 15px;
-          border-radius: 8px;
-          background-color: $darkorange;
-          border-left: 5px solid $lightblue;
-          .left {
-            .Name {
-              font-weight: 600;
-              color: $darkblue;
+    .View {
+      background-color: $darkblue;
+      color: #fff;
+      padding: 7px 12px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+  }
+  .Content {
+    .Day {
+      color: grey;
+      padding: 10px 0;
+    }
+    .Evn {
+      .content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: $darkorange;
+        border-left: 5px solid $lightblue;
+        margin-bottom: 10px;
+        .left {
+          .Name {
+            font-weight: 600;
+            color: $darkblue;
+          }
+          .Time {
+            font-size: 14px;
+            color: $lightblue;
+            padding: 10px 0;
+          }
+          .User {
+            display: flex;
+            .Image {
+              margin-right: 10px;
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
             }
-            .Time {
-              font-size: 14px;
+            .viewpro {
+              @include flex(center, center);
+              font-size: 12px;
               color: $lightblue;
-              padding: 10px 0;
-            }
-            .User {
-              display: flex;
-              .Image {
-                margin-right: 10px;
-                img {
-                  width: 30px;
-                  height: 30px;
-                  border-radius: 50%;
-                  object-fit: cover;
-                }
-              }
-              .viewpro {
-                @include flex(center, center);
-                font-size: 12px;
-                color: $lightblue;
-              }
             }
           }
-          .right {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: $lightblue;
-            font-size: 30px;
-            color: #fff;
-            text-align: center;
-            @include flex(center, center);
-          }
         }
-        .content:first-child {
-          background-color: $lightorange !important;
-          border-left: 5px solid $darkblue !important;
-        }
-        .content:nth-child(3) {
-          background-color: $darkblue;
-          border-left: 5px solid $darkorange;
+        .right {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          background-color: $lightblue;
+          font-size: 30px;
           color: #fff;
-          .left {
-            .Name {
-              color: #fff;
-            }
-            .Time {
+          text-align: center;
+          @include flex(center, center);
+        }
+      }
+      .content:first-child {
+        background-color: $lightorange !important;
+        border-left: 5px solid $darkblue !important;
+      }
+      .content:nth-child(3) {
+        background-color: $darkblue;
+        border-left: 5px solid $darkorange;
+        color: #fff;
+        .left {
+          .Name {
+            color: #fff;
+          }
+          .Time {
+            color: grey;
+          }
+          .User {
+            .viewpro {
               color: grey;
             }
-            .User {
-              .viewpro {
-                color: grey;
-              }
-            }
           }
         }
       }
     }
   }
-  
 }

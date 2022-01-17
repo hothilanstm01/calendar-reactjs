@@ -19,6 +19,9 @@ function App() {
     setMoments((prev) => prev.clone().add(1, "month"));
   };
   const todayHandler = () => setMoments(moment());
+  const handleChange = (value) => {
+    setMoments((prev) => prev.clone().month(value));
+  }
   useEffect(() => {
     const fetchEvents = async () => {
       const res = await eventsApi.GetEvents();
@@ -26,7 +29,6 @@ function App() {
     };
     fetchEvents();
   }, [moments]);
-  console.log(events);
   return (
     <div className="main">
       <div className="container">
@@ -41,12 +43,13 @@ function App() {
             <CalendarLeft startDay={startDay} today={moments} events={events} />
           </div>
           <div className="CalendarRight">
-            {/* <Header
+            <Header
               today={moments}
               prevHandler={prevHandler}
               nextHandler={nextHandler}
               todayHandler={todayHandler}
-            /> */}
+              handleChange={handleChange}
+            />
             <Celendar
               startDay={startDay}
               today={moments}

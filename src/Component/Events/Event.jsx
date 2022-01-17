@@ -2,8 +2,7 @@ import React from "react";
 // import { Link } from 'react-router-dom';
 
 const Event = (props) => {
-  const { day,events } = props;
-
+  const { daysArray,dayValue,events } = props;
   console.log(events);
   return (
     <div className="Event">
@@ -12,7 +11,7 @@ const Event = (props) => {
         <div className="View">View All</div>
       </div>
       <div className="Content">
-        <h4 className="Day">{day.format("dddd, d MMM")}</h4>
+        <h4 className="Day">{dayValue.format("dddd, D MMM")}</h4>
         <div className="Evn">
           <div className="content">
             <div className="left">

@@ -5,8 +5,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include tablet{
+      flex-wrap: wrap;
+    }
     .Left {
       display: flex;
+      @include tablet{
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        width: 100%;
+        @include flex(center, center);
+      }
       .ButtonToday {
         border: 1px solid $lightblue;
         padding: 7px 12px;
@@ -29,6 +38,10 @@
     }
     .Right {
       cursor: pointer;
+      @include tablet{
+        width: 100%;
+        @include flex(center, center);
+      }
       .ant-select {
         color: #fff;
         .ant-select-selector {

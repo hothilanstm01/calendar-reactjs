@@ -7,11 +7,19 @@
         margin: 0 auto;
         .CalendarMain{
             display: flex;
+            @include tablet{
+                flex-wrap: wrap;
+              }
             .CalendarLeft{
                 width: 30%;
                 margin-right: 2%;
                 background-color: #fff;
                 padding: 40px 10px;
+                @include tablets{
+                    width: 100%;
+                    margin-bottom: 20px;
+                    margin-right: 0;
+                  }
                 .Celendar{
                     
                     .CellWrapper{
@@ -29,6 +37,9 @@
             .CalendarRight{
                 width: 68%;
                 background-color: #fff;
+                @include tablets{
+                    width: 100%;
+                  }
             }
         }
     }

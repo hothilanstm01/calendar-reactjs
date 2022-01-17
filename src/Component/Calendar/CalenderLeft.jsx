@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import moment from "moment";
 import styled from "styled-components";
 import Event from "../Events/Event";
@@ -9,26 +9,20 @@ const CellWrapper = styled.div`
   height: ${(props) => (props.isHeader ? 30 : 50)}px;
   color: ${(props) => (props.isSelectedMonth ? "#000" : "#ccc")};
   background-color: ${(props) => (props.isDay ? "#E4F6ED" : "")};
-  /* .EventItem{
-    display: none;
-    &.active {
-      display: block;
-      // overflow: hidden;
-    }
-  } */
 `;
 const CalendarLeft = (props) => {
-  const moments = moment();
   const { startDay, today, events } = props;
   const day = startDay.clone().subtract(1, "day");
   const daysArray = [...Array(42)].map(() => day.add(1, "day").clone());
   const isCurrentDay = (day) => moment().isSame(day, "day");
   const isSelectedMonth = (day) => today.isSame(day, "month");
-  const showEvents = useRef(null);
-
-  const evToggle = () => {
-    showEvents.current.classList.toggle("active");
-    console.log(showEvents);
+  const [dayValue, setdayValue] = useState(moment());
+  const [visible, setVisible] = useState(false);
+  const [colorValue, setcolorValue] = useState(null)
+  const showDrawer = (value) => {
+    setVisible(true);
+    setdayValue(value);
+    setcolorValue()
   };
   return (
     <>
@@ -48,7 +42,7 @@ const CalendarLeft = (props) => {
           <CellWrapper
             key={dayItem.unix()}
             isSelectedMonth={isSelectedMonth(dayItem)}
-            onClick={evToggle}
+            onClick={() => showDrawer(dayItem)}
           >
             <div className="RowCell">
               <div className="DayWrapper">
@@ -63,42 +57,9 @@ const CalendarLeft = (props) => {
         ))}
       </div>
       <div className="Line"></div>
-
-      <div className="Events" ref={showEvents}>
-        <div className="Event">
-          <div className="HeaderEvent">
-            <h3 className="Title">Upcoming Events</h3>
-            <div className="View">View All</div>
-          </div>
-          <div className="Content">
-            <h4 className="Day">{day.format("dddd, d MMM")}</h4>
-            <div className="Evn">
-              <div className="content">
-                <div className="left">
-                  <a href="" className="Name">
-                    Gentle Yoga for Terrible Times
-                  </a>
-                  <div className="Time">9:00 AM - 09:30 PM GTM +8</div>
-                  <div className="User">
-                    <div className="Image">
-                      <img
-                        src="https://staticg.sportskeeda.com/editor/2021/10/8cd36-16334407189532-800.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <a href="" className="viewpro">
-                      View Client Profile
-                    </a>
-                  </div>
-                </div>
-                <div className="right">
-                  <i class="bx bx-camera-movie"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {visible ? <Event dayValue={dayValue} events={events} daysArray={daysArray.map(dayItem => dayItem)}/> : ''}
+      
+     
     </>
   );
 };
